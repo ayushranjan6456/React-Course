@@ -6,6 +6,8 @@ const ExpenseForm = (props) => {
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
+  //Way 2 of defining input from user in a single object
+
   // const [userInput, setUserInput] = useState({
   //   enteredTitle: '',
   //   enteredAmount: '',
@@ -14,10 +16,14 @@ const ExpenseForm = (props) => {
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
+
+    //Way 2 while using a single object
     // setUserInput({
     //   ...userInput,
     //   enteredTitle: event.target.value,
     // })
+    //
+    //Correct way of setting prevState
     // setUserInput( (prevState) => {
     //   return { ...prevState, enteredTitle: event.target.value}
     // }
