@@ -4,8 +4,10 @@ import React, { useState } from "react";
 
 const DUMMY_DATA = [
   { id: "e05", title: "Car", amount: 1000, date: new Date(2021, 2, 28) },
-  { id: "e04", title: "Rent", amount: 300, date: new Date(2021, 2, 18) },
-  { id: "e03", title: "Insurance", amount: 100, date: new Date(2021, 2, 23) },
+  { id: "e04", title: "Rent", amount: 300, date: new Date(2020, 2, 18) },
+  { id: "e03", title: "Insurance", amount: 400, date: new Date(2020, 1, 23)},
+  { id: "e02", title: "Grocery", amount: 800, date: new Date(2019, 2, 2)},
+  { id: "e01", title: "Travel", amount: 200, date: new Date(2021, 0, 12) },
 ];
 
 const App = () => {
