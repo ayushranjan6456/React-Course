@@ -45,7 +45,7 @@ const App = () => {
 
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <h2 style={{textAlign:'center', color:'white'}}>Expense Tracker App</h2>
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>

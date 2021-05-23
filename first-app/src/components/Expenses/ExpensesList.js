@@ -8,7 +8,7 @@ const ExpensesList = (props) => {
   }
 
   return (
-    <ul className="expenses-list">
+    <div className="expenses-list">
       {props.items.map((expense) => (
         <ExpenseItem
           key={expense.id}
@@ -17,7 +17,7 @@ const ExpensesList = (props) => {
           date={expense.date}
         />
       ))}
-    </ul>
+    </div>
   );
 
   /*  To do the conditional content showing using && operator  */
