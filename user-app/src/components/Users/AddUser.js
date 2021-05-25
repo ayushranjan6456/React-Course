@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
@@ -6,13 +6,21 @@ import Wrapper from "../Helpers/Wrapper";
 import styles from "./AddUser.module.css";
 
 const AddUser = (props) => {
-  const [enteredUsername, setEnteredUsername] = useState("");
-  const [enteredAge, setEnteredAge] = useState("");
+  //Using State
+  // const [enteredUsername, setEnteredUsername] = useState("");
+  // const [enteredAge, setEnteredAge] = useState("");
+  //Using Ref
+  const usernameRef = useRef();
+  const ageRef = useRef();
+
   const [error, setError] = useState();
 
   const AddUserHandler = (event) => {
     event.preventDefault();
     //check is username or age is empty
+    //using ref
+    const enteredUsername = usernameRef.current.value;
+    const enteredAge = ageRef.current.value;
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
       setError({
         title: "Inavlid format",
@@ -30,22 +38,23 @@ const AddUser = (props) => {
     }
     // console.log(enteredUsername, enteredAge);
     props.onAddUser(enteredUsername, enteredAge);
-    setEnteredUsername("");
-    setEnteredAge("");
+    usernameRef.current.value='';
+    ageRef.current.value='';
   };
 
   const errorHandler = () => {
     setError();
-    setEnteredUsername("");
-    setEnteredAge("");
+    usernameRef.current.value='';
+    ageRef.current.value='';
   };
 
-  const usernameChangeHandler = (event) => {
-    setEnteredUsername(event.target.value);
-  };
-  const ageChangeHandler = (event) => {
-    setEnteredAge(event.target.value);
-  };
+  //Used only if we use state, here we are using refs
+  // const usernameChangeHandler = (event) => {
+  //   setEnteredUsername(event.target.value);
+  // };
+  // const ageChangeHandler = (event) => {
+  //   setEnteredAge(event.target.value);
+  // };
   return (
     //Using Wrapper here, either <Wrapper or <>  </> could be used or <React.Fragment></React.Fragment> could be used
     <Wrapper>
@@ -61,16 +70,18 @@ const AddUser = (props) => {
           <label htmlFor="username">Username</label>
           <input
             id="username"
-            value={enteredUsername}
             type="text"
-            onChange={usernameChangeHandler}
+            ref={usernameRef}
+            //value={enteredUsername}  for state
+            // onChange={usernameChangeHandler} 
           />
           <label htmlFor="age">Age[Years]</label>
           <input
             id="age"
             type="number"
-            value={enteredAge}
-            onChange={ageChangeHandler}
+            ref={ageRef}
+            // value={enteredAge}
+            // onChange={ageChangeHandler}
           />
           <Button type="submit">Add User</Button>
         </form>
