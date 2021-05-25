@@ -36,6 +36,8 @@ const AddUser = (props) => {
 
   const errorHandler = () => {
     setError();
+    setEnteredUsername("");
+    setEnteredAge("");
   };
 
   const usernameChangeHandler = (event) => {
