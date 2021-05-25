@@ -8,16 +8,20 @@ const App = () => {
 
   const addUserHandler = (newUsername, newAge) => {
     setUsersList((prevList) => {
-      return [...prevList, {name:newUsername, age:newAge, id: Math.random.toString()}]
+      return [
+        ...prevList,
+        { name: newUsername, age: newAge, id: Math.random.toString() },
+      ];
     });
   };
 
-
   return (
-    <div>
+    //Using Fragment here, either <Wrapper or <>  </> could be used or <React.Fragment></React.Fragment> could be used
+
+    <React.Fragment>
       <AddUser onAddUser={addUserHandler} />
-      {usersList.length!==0 && <UsersList users={usersList} />}
-    </div>
+      {usersList.length !== 0 && <UsersList users={usersList} />}
+    </React.Fragment>
   );
 };
 
